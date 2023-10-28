@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Import app_views from api.v1.views """
 from api.v1.views import app_views
-from flask import jsonify
+from flask import jsonify, make_response
 from models import storage
 
 
@@ -11,7 +11,7 @@ def status():
     return jsonify(status="OK")
 
 
-@app_views.route("/stats", strict_slashes=False)
+@app_views.route("/stats", methods=['GET'], strict_slashes=False)
 def stats():
     """ Retrieves the number of each objects by type """
     return (make_response(jsonify(
