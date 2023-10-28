@@ -14,10 +14,9 @@ port = getenv('HBNB_API_PORT', 5000)
 
 @app.teardown_appcontext
 def teardown(err):
-    """Call storage.close
-    """
+    """ Call storage.close """
     storage.close()
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host=host, port=port, threaded=True)
+    app.run(host=host, port=port, threaded=True)

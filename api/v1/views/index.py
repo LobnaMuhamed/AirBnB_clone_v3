@@ -8,3 +8,7 @@ from flask import jsonify
 def status():
     """ Returns a JSON: 'status': 'OK' """
     return jsonify({"Status": "OK"})
+
+
+if __name__ == "__main__":
+    pass
