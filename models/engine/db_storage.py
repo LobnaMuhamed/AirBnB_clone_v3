@@ -79,7 +79,14 @@ class DBStorage:
         """ Returns object based on the class &
             its ID, or None if not found
         """
-        db = getenv("HBNB_TYPE_STORAGE")
-        if (db == "db"):
-            obj = self.__session.query(classes[cls]).filter_by(id=id)
+        obj = None
+        if cls is not None and issubclass(cls, BaseModel):
+            obj = self.__session.query(cls).filter(cls.id == id).first()
         return obj
+
+    def count(self, cls=None):
+        """
+        Returns the number of objects in storage matching the given class.
+        If no class is passed, returns the count of all objects in storage.
+        """
+        return len(self.all(cls))
