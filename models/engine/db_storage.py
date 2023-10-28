@@ -74,3 +74,12 @@ class DBStorage:
     def close(self):
         """call remove() method on the private session attribute"""
         self.__session.remove()
+
+    def get(self, cls, id):
+        """ Returns object based on the class &
+            its ID, or None if not found
+        """
+        db = getenv("HBNB_TYPE_STORAGE")
+        if (db == "db"):
+            obj = self.__session.query(classes[cls]).filter_by(id=id)
+        return obj
