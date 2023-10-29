@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Import app_views from api.v1.views """
 from api.v1.views import app_views
-from flask import jsonify, make_response
+from flask import jsonify
 from models import storage
 
 
@@ -22,4 +22,4 @@ def stats():
                 "states": storage.count('State'),
                 "users": storage.count('User')
                 }
-    return (make_response(jsonify(all_stats)))
+    return (jsonify(all_stats))
